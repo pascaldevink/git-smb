@@ -82,6 +82,7 @@ def call_git(argv):
     try:
         with tempfile.NamedTemporaryFile() as temp:
             subprocess.check_call(argv)
+            return True
     except subprocess.CalledProcessError as error:
         # Make an exception for calls without an argument. This displays the quick help, so there's not really an error.
         if argument_length is 0:
@@ -91,15 +92,13 @@ def call_git(argv):
         if sound is not None:
             play(sound)
 
-        return False
-
-    return True
+    return False
 
 def main(argv):
+    git_command = argv[0]
     return_value = call_git(argv)
 
     if return_value:
-        git_command = argv[0]
         sound = what_sound(git_command)
         if sound is not None:
             play(sound)
