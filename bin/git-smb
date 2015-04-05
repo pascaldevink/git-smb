@@ -42,7 +42,7 @@ def play(sound):
 
     if player:
         datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-        datapath = os.path.join(datapath, 'data')
+        datapath = os.path.join(datapath, 'share/data')
         if not sound.endswith('.wav'):
             sound += '.wav'
 
