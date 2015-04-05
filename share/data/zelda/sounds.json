@@ -1,0 +1,13 @@
+{
+  "commands": {
+    "clone": "LOZ_Fanfare",
+    "checkout": "LOZ_Secret",
+    "add": "LOZ_Get_Rupee",
+    "rm": "LOZ_Sword_Shoot",
+    "commit": "LOZ_Stairs",
+    "push": "LOZ_MagicalRod",
+    "pull": "LOZ_Get_Item",
+    "tag": "LOZ_Recoders"
+  },
+  "error": "LOZ_Die"
+}

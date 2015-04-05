@@ -1,0 +1,13 @@
+{
+  "commands": {
+    "clone": "smb_kick",
+    "checkout": "smb_stomp",
+    "add": "smb_jump",
+    "rm": "smb_fireball",
+    "commit": "smb_1up",
+    "push": "smb_vine",
+    "pull": "smb_pipe",
+    "tag": "smb_pause"
+  },
+  "error": "smb_die"
+}

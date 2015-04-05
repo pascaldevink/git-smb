@@ -4,11 +4,13 @@ import sys
 import os
 import subprocess
 import tempfile
+import json
+
+sounds = []
 
 ######################
 # audio player methods
 ######################
-
 
 def is_exe(fpath):
     return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
@@ -42,7 +44,7 @@ def play(sound):
 
     if player:
         datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-        datapath = os.path.join(datapath, 'share/data')
+        datapath = os.path.join(datapath, 'share/data/' + get_sounds_set())
         if not sound.endswith('.wav'):
             sound += '.wav'
 
@@ -55,26 +57,17 @@ def play(sound):
 # wrapper methods
 ######################
 
-def what_sound(command):
-    return {
-        'clone': 'smb_kick',
-        'checkout': 'smb_stomp',
-        'add': 'smb_jump',
-        'rm': 'smb_fireball',
-        'commit': 'smb_1up',
-        'push': 'smb_vine',
-        'pull': 'smb_pipe',
-        'tag': 'smb_pause',
-    }.get(command, None)
+def what_sound(sounds, command):
+    return sounds['commands'].get(command, None)
 
-def what_sound_on_error(command):
+def what_sound_on_error(sounds, command):
     return {
         'config': None, # git config is often used to build prompts
         'rev-parse': None, # git rev-parse is often used to build prompts
         'describe': None, # git describe is often used to build prompts
-    }.get(command, 'smb_die')
+    }.get(command, sounds['error'])
 
-def call_git(argv):
+def call_git(sounds, argv):
     argument_length = len(argv)
     argv.insert(0, 'git')
     argv.insert(0, '/usr/bin/env')
@@ -88,18 +81,42 @@ def call_git(argv):
         if argument_length is 0:
             return False
 
-        sound = what_sound_on_error(argv[2])
+        sound = what_sound_on_error(sounds, argv[2])
         if sound is not None:
             play(sound)
 
     return False
 
+
+def load_sounds():
+    datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    datapath = os.path.join(datapath, 'share/data/' + get_sounds_set())
+    with open(os.path.join(datapath, "sounds.json")) as sound_file:
+        sounds = json.load(sound_file)
+
+    return sounds
+
+def get_sounds_set():
+    datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+    datapath = os.path.join(datapath, 'etc/')
+    config_path = os.path.join(datapath, "config.json")
+
+    if os.path.exists(config_path):
+        with open(config_path) as config_file:
+            config = json.load(config_file)
+
+        return config['theme']
+
+    return 'smb'
+
 def main(argv):
+    sounds = load_sounds()
+
     git_command = argv[0] if len(argv) > 0 else None
-    return_value = call_git(argv)
+    return_value = call_git(sounds, argv)
 
     if return_value:
-        sound = what_sound(git_command)
+        sound = what_sound(sounds, git_command)
         if sound is not None:
             play(sound)
 
