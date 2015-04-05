@@ -27,6 +27,9 @@ Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucke
 - tag: recoders
 - error: die
 
+[![Screencast with zelda theme](http://img.youtube.com/vi/G4Mh7brzfY4/0.jpg)](https://www.youtube.com/watch?v=G4Mh7brzfY4)
+
+
 # Installation
 
 ## Homebrew
