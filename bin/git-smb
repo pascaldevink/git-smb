@@ -6,7 +6,6 @@ import subprocess
 import tempfile
 import json
 
-sounds = []
 
 ######################
 # audio player methods
@@ -60,12 +59,14 @@ def play(sound):
 def what_sound(sounds, command):
     return sounds['commands'].get(command, None)
 
+
 def what_sound_on_error(sounds, command):
     return {
         'config': None, # git config is often used to build prompts
         'rev-parse': None, # git rev-parse is often used to build prompts
         'describe': None, # git describe is often used to build prompts
     }.get(command, sounds['error'])
+
 
 def call_git(sounds, argv):
     argument_length = len(argv)
@@ -96,18 +97,35 @@ def load_sounds():
 
     return sounds
 
-def get_sounds_set():
-    datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    datapath = os.path.join(datapath, 'etc/')
-    config_path = os.path.join(datapath, "config.json")
 
-    if os.path.exists(config_path):
-        with open(config_path) as config_file:
+def get_sounds_set():
+    try:
+        config_file = get_config_file()
+
+        with open(config_file) as config_file:
             config = json.load(config_file)
 
         return config['theme']
+    except FileNotFoundError as error:
+        return 'smb'
 
-    return 'smb'
+
+def get_config_file():
+    config_path1 = os.path.join('/etc/', "config.json")
+    config_path2 = os.path.join('/usr/local/etc/', "config.json")
+    config_path3 = os.path.join(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'etc/'), "config.json")
+
+    if os.path.exists(config_path1):
+        return config_path1
+
+    if os.path.exists(config_path2):
+        return config_path2
+
+    if os.path.exists(config_path3):
+        return config_path3
+
+    raise FileNotFoundError()
+
 
 def main(argv):
     sounds = load_sounds()
