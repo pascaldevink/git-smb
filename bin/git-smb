@@ -106,7 +106,7 @@ def get_sounds_set():
             config = json.load(config_file)
 
         return config['theme']
-    except FileNotFoundError as error:
+    except Exception as error:
         return 'smb'
 
 
@@ -124,7 +124,7 @@ def get_config_file():
     if os.path.exists(config_path3):
         return config_path3
 
-    raise FileNotFoundError()
+    raise Exception("Configuration file not found")
 
 
 def main(argv):
