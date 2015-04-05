@@ -95,7 +95,7 @@ def call_git(argv):
     return False
 
 def main(argv):
-    git_command = argv[0]
+    git_command = argv[0] if len(argv) > 0 else None
     return_value = call_git(argv)
 
     if return_value:
