@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import sys
 import os
@@ -41,7 +41,7 @@ def play(sound):
     player = audioplayer()
 
     if player:
-        datapath = os.path.dirname(os.path.realpath(__file__))
+        datapath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
         datapath = os.path.join(datapath, 'data')
         if not sound.endswith('.wav'):
             sound += '.wav'
@@ -67,15 +67,30 @@ def what_sound(command):
         'tag': 'smb_pause',
     }.get(command, None)
 
+def what_sound_on_error(command):
+    return {
+        'config': None, # git config is often used to build prompts
+        'rev-parse': None, # git rev-parse is often used to build prompts
+        'describe': None, # git describe is often used to build prompts
+    }.get(command, 'smb_die')
 
 def call_git(argv):
+    argument_length = len(argv)
     argv.insert(0, 'git')
+    argv.insert(0, '/usr/bin/env')
 
     try:
         with tempfile.NamedTemporaryFile() as temp:
             subprocess.check_call(argv)
     except subprocess.CalledProcessError as error:
-        play('smb_die')
+        # Make an exception for calls without an argument. This displays the quick help, so there's not really an error.
+        if argument_length is 0:
+            return False
+
+        sound = what_sound_on_error(argv[2])
+        if sound is not None:
+            play(sound)
+
         return False
 
     return True
