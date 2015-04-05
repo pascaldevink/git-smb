@@ -1,6 +1,10 @@
 This is a small wrapper around git that plays sounds effects from Super Mario Bros (NES) on common commands.
 Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucket.org/seanfarley/smb/src)
 
+If you have any ideas about how to package and distribute this project (I'm relatively new to python), please feel free to open an issue!
+
+# Sounds for commands
+
 - clone: kick
 - checkout: stomp
 - add: jump
@@ -11,4 +15,9 @@ Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucke
 - tag: pause
 - error: die
 
-If you have any ideas about how to package and distribute this project (I'm relatively new to python), please feel free to open an issue!
+# Installation
+
+1. Clone or download this repository.
+2. Either put the bin folder in your path or create a symlink to it (eg. in /usr/local/bin)
+3. You can now use it with $ git-smb
+4. Bonus: put "alias git=git-smb" somewhere in your (ba)(z)(k)sh profile to make the wrapping complete and easy
