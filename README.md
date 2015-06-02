@@ -1,4 +1,4 @@
-This is a small wrapper around git that plays sounds effects (currently from Super Mario Bros (NES) or Zelda (NES)) on common commands.
+This is a small wrapper around git that plays sounds effects (currently from Super Mario Bros (NES), Zelda (NES) or Command & Conquer) on common commands.
 Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucket.org/seanfarley/smb/src)
 
 # Sounds for commands
@@ -27,6 +27,18 @@ Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucke
 - tag: recoders
 - error: die
 
+## Command & Conquer
+
+- clone: building
+- checkout: primary building selected
+- add: ok
+- rm: forces have fallen
+- commit: acknowledged
+- push: very well
+- pull: as you wish
+- tag: mission saved
+- error: cannot deploy here
+
 [![Screencast with zelda theme](http://img.youtube.com/vi/G4Mh7brzfY4/0.jpg)](https://www.youtube.com/watch?v=G4Mh7brzfY4)
 
 
@@ -52,3 +64,4 @@ Locate the config.json file in either <install_path>/etc/config.json (for manual
 The only configuration currently is the theme, with the following options:
 - smb, for Super Mario Bros themed sounds effects
 - zelda, for Legend Of Zelda themed sounds effects
+- cc, for Command & Conquer themed sound effects
