@@ -1,0 +1,13 @@
+{
+  "commands": {
+    "clone": "cc_building",
+    "checkout": "cc_pb",
+    "add": "cc_ok",
+    "rm": "cc_fallen",
+    "commit": "cc_ak",
+    "push": "cc_well",
+    "pull": "cc_wish",
+    "tag": "cc_save"
+  },
+  "error": "cc_nodeply"
+}
