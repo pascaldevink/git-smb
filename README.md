@@ -77,3 +77,4 @@ The only configuration currently is the theme, with the following options:
 - smb, for Super Mario Bros themed sounds effects
 - zelda, for Legend Of Zelda themed sounds effects
 - cc, for Command & Conquer themed sound effects
+- dn, for Duke Nukem themed sound effects
