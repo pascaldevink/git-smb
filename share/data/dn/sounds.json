@@ -1,0 +1,13 @@
+{
+  "commands": {
+    "clone": "DN_makeday",
+    "checkout": "DN_myway",
+    "add": "DN_talkin",
+    "rm": "DN_getout",
+    "commit": "DN_pieces",
+    "push": "DN_good",
+    "pull": "DN_getsome",
+    "tag": "DN_hail"
+  },
+  "error": "DN_suck"
+}

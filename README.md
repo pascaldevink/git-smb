@@ -39,6 +39,18 @@ Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucke
 - tag: mission saved
 - error: cannot deploy here
 
+## Duke Nukem
+
+- clone: Make my day
+- checkout: I do it my way
+- add: Are you talking to me?
+- rm: Get out
+- commit: Rest in pieces
+- push: Damn i'm good
+- pull: Get some
+- tag: Hail to the king
+- error: You guys suck
+
 [![Screencast with zelda theme](http://img.youtube.com/vi/G4Mh7brzfY4/0.jpg)](https://www.youtube.com/watch?v=G4Mh7brzfY4)
 
 
