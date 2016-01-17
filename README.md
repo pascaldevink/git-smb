@@ -1,4 +1,4 @@
-This is a small wrapper around git that plays sounds effects (currently from Super Mario Bros (NES), Zelda (NES) or Command & Conquer) on common commands.
+This is a small wrapper around git that plays sounds effects (currently from Super Mario Bros (NES), Zelda (NES), Command & Conquer or Duke Nukem) on common commands.
 Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucket.org/seanfarley/smb/src)
 
 # Sounds for commands
