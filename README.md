@@ -70,6 +70,12 @@ Heavily inspired by Sean Farley's implementation for mercurial (https://bitbucke
 3. You can now use it with ```$ git-smb```
 4. Bonus: put ```alias git=git-smb``` somewhere in your (ba)(z)(k)sh profile to make the wrapping complete and easy
 
+## Arch linux
+
+1. Install from AUR, using e.g.: `yaourt -S git-smb`
+2. You can now use it with ```$ git-smb```
+3. Bonus: put ```alias git=git-smb``` somewhere in your (ba)(z)(k)sh profile to make the wrapping complete and easy
+
 # Configuration
 
 Locate the config.json file in either <install_path>/etc/config.json (for manual installations) or in /usr/local/etc/git-smb/config.json.
